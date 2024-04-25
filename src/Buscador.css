@@ -1,0 +1,20 @@
+.form-group {
+    width: 100%;
+    margin-right: 2rem;
+  }
+
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  .form-control {
+    margin-right: 2rem;
+    width: 150px;
+    height: 50px;
+
+  }
+
