@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Api from '../servicios/api';
+//import Api from '../../../servicios/api';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,7 +52,16 @@ class Listar extends React.Component {
     render() {
 
         const { datosCargados, cliente } = this.state
-        if (!datosCargados) { return (<div>Cargando...</div>); }
+        if (!datosCargados) {
+            return (
+                <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+                    <span className='text-dark'>Cargando...</span>
+                    <div className="spinner-border text-primary" role="status">    
+                    </div>
+                </div>
+
+            );
+        }
         else {
             return (
                 <div className="card">
@@ -62,7 +71,7 @@ class Listar extends React.Component {
                             modalAbierto={this.state.modalAbierto}
                             toggleModal={() => this.setState({ modalAbierto: !this.state.modalAbierto })}
                             agregarCliente={this.agregarClienteYCerrarModal}
-                            cliente={({ codigo: cliente.clieN_ID})}
+                            cliente={({ codigo: cliente.clieN_ID })}
                         />
                     </div>
                     <div className="card-body">
@@ -90,14 +99,15 @@ class Listar extends React.Component {
                                             <td>{cliente.telefono}</td>
                                             <td>{cliente.email}</td>
                                             <td >
-                                               
+
                                                 <Editar2
                                                     modalAbierto={this.state.modalAbierto}
                                                     toggleModal={() => this.setState({ modalAbierto: !this.state.modalAbierto })}
-                                                    cliente={({ codigo: cliente.clieN_ID , nit: cliente.nit, nombre: cliente.nombre, 
-                                                        direccion: cliente.direccion, telefono: cliente.telefono, email: cliente.email})}
+                                                    cliente={({
+                                                        codigo: cliente.clieN_ID, nit: cliente.nit, nombre: cliente.nombre,
+                                                        direccion: cliente.direccion, telefono: cliente.telefono, email: cliente.email
+                                                    })}
                                                 />
-                                                
                                                 &nbsp;
                                                 &nbsp;
                                                 <button className="btn btn-danger" onClick={() => this.borrarRegistros(cliente.clieN_ID)}>
