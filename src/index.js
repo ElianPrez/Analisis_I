@@ -6,11 +6,13 @@ import Navbar from './Navbar'; // Importación del componente Navbar
 import Login from './login'; // Importación del componente Navbar
 import App from './App'; // Importación del componente Navbar
 import Users from './Datos_u'; // Importación del componente Navbar
-import Reportes from './Reportes'; // Importación del componente Navbar
 import Table from './Table';  
-import Listar from './componenetes/Listar'; 
-import Editar from './componenetes/Editar'; 
-import Crear from './componenetes/Crear'; 
+import Listar from './componenetes/Clientes/Listar'; 
+import Listar_tran from './componenetes/Transacciones/Listar'; 
+import Listar_ctacontables from './componenetes/CuentasContables/Listar'
+import Editar from './componenetes/Clientes/Editar'; 
+import Crear from './componenetes/Clientes/Crear'; 
+import Reportes from './Datos_u'; 
 //import Users from '/Datos_u';
 //import { BrowserRouter as Router,  Switch, Route, Link } from 'react-router-dom';
 import { createBrowserRouter, RouterProvider, Router } from 'react-router-dom';
@@ -38,8 +40,8 @@ const router = createBrowserRouter([
     errorElement: <h1>Error</h1>,
   },
   {
-    path:"/reportes",
-    element: <Reportes/>,
+    path:"/Transacciones",
+    element: <Listar_tran/>,
     errorElement: <h1>Error</h1>,
   },
   {
@@ -51,6 +53,18 @@ const router = createBrowserRouter([
   {
     path:"/crear",
     element: <Crear/>,
+    errorElement: <h1>Error</h1>,
+      
+  },
+  {
+    path:"/CuentasContables",
+    element: <Listar_ctacontables/>,
+    errorElement: <h1>Error</h1>,
+      
+  },
+  {
+    path:"/Reportes",
+    element: <Reportes/>,
     errorElement: <h1>Error</h1>,
       
   },
